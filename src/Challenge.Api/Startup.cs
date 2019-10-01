@@ -16,6 +16,7 @@ namespace Challenge.Api
                 .AddJsonOptions(options => { options.SerializerSettings.DateFormatString = "dd/MM/yyyy"; }); 
             services.AddResponseCompression();
             services.AddTransient<ICidadeService, CidadeService>();
+            services.AddTransient<ICoberturaService, CoberturaService>();
             services.AddTransient<CotacaoHandler, CotacaoHandler>();
 
             services.AddSwaggerGen(x =>

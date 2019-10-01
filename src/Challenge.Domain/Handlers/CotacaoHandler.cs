@@ -14,10 +14,12 @@ namespace Challenge.Domain.Handlers
         ICommandHandler<RealizarCotacaoCommand>
     {
         private readonly ICidadeService _cidadeService;
+        private readonly ICoberturaService _coberturaService;
 
-        public CotacaoHandler(ICidadeService cidadeService)
+        public CotacaoHandler(ICidadeService cidadeService, ICoberturaService coberturaService)
         {
             _cidadeService = cidadeService;
+            _coberturaService = coberturaService;
         }
 
         public async Task<ICommandResult> Handle(RealizarCotacaoCommand command)
@@ -25,7 +27,9 @@ namespace Challenge.Domain.Handlers
             var nome = new Nome(command.Nome);
             var cep = new Cep(command.Endereco.Cep);
             var endereco = new Endereco(command.Endereco.Logradouro, command.Endereco.Bairro, cep, command.Endereco.Cidade);
-            var coberturas = Cobertura.ObterCoberturasPorId(command.Coberturas);
+
+            var coberturas = _coberturaService.ObterPorIds(command.Coberturas);
+            //var coberturas = Cobertura.ObterCoberturasPorId(command.Coberturas);
             var segurado = new Cotacao(nome, command.Nascimento, endereco, coberturas);
 
             AddNotifications(nome, cep, endereco, segurado);

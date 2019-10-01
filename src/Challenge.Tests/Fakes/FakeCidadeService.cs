@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Challenge.Domain.DTO;
-using Challenge.Domain.Models;
 using Challenge.Domain.Services;
 
 namespace Challenge.Tests.Fakes

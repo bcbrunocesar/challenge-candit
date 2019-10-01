@@ -1,4 +1,6 @@
-﻿using Challenge.Web.Services;
+﻿using Challenge.Domain.Services;
+using Challenge.Infra.Services;
+using Challenge.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -20,6 +22,7 @@ namespace Challenge.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<CotacaoApi>();
+            services.AddTransient<ICoberturaService, CoberturaService>();
             services.Configure<CookiePolicyOptions>(options =>
             {
                 options.CheckConsentNeeded = context => true;

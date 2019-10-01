@@ -1,0 +1,23 @@
+﻿@model Challenge.Web.ViewModels.CotacaoViewModels.RealizarCotacaoResultViewModel
+
+<div id="resultad-cotacao" class="my-5">
+    <h4>Resultado</h4>
+    <div class="alert alert-danger text-center">
+        <dl class="cotacao-detalhes">
+            <dt><label asp-for="@Model.Success"></label></dt>
+            <dd>@Model.Success</dd>
+
+            <dt><label asp-for="@Model.Message"></label></dt>
+            <dd>@Model.Message</dd>
+        </dl>
+        <hr />
+        <h4>Corrija as informações abaixo e tente novamente:</h4>
+        <ol>
+            @foreach (var notification in Model.Notifications)
+            {
+                <li class="font-weight-normal">@notification.Message</li>
+            }
+        </ol>
+    </div>
+    <button id="nova-cotacao" class="btn btn-lg btn-block btn-secondary text-uppercase">Tentar novamente</button>
+</div>

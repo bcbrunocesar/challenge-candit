@@ -34,7 +34,7 @@ namespace Challenge.Tests.Handlers
                 }
             };
 
-            var cotacaoHandler = new CotacaoHandler(new FakeCidadeService());
+            var cotacaoHandler = new CotacaoHandler(new FakeCidadeService(),new FakeCoberturaService());
             var resultado = await cotacaoHandler.Handle(command);
 
             Assert.AreNotEqual(null, resultado);

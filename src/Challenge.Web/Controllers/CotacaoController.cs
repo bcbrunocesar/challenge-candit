@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Challenge.Domain.Services;
 using Challenge.Web.Services;
 using Challenge.Web.ViewModels.CotacaoViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
 
 namespace Challenge.Web.Controllers
@@ -14,16 +16,19 @@ namespace Challenge.Web.Controllers
     public class CotacaoController : Controller
     {
         private readonly CotacaoApi _cotacaoApi;
+        private readonly ICoberturaService _coberturaService;
 
-        public CotacaoController(CotacaoApi cotacaoApi)
+        public CotacaoController(CotacaoApi cotacaoApi, ICoberturaService coberturaService)
         {
             _cotacaoApi = cotacaoApi;
+            _coberturaService = coberturaService;
         }
 
         [HttpGet]
         [Route("")]
         public IActionResult Index()
         {
+            ViewBag.Coberturas = new SelectList(_coberturaService.ObterTodos(), "Id", "Nome");
             return View();
         }
 
@@ -31,13 +36,11 @@ namespace Challenge.Web.Controllers
         [Route("")]
         public async Task<IActionResult> Index(RealizarCotacaoViewModel viewModel)
         {
-            viewModel.Coberturas = new List<string> {"01", "03", "05"};
-
-            RealizarCotacaoResultViewModel resultado;
             var jsonString = JsonConvert.SerializeObject(viewModel);
 
             try
             {
+                RealizarCotacaoResultViewModel resultado;
                 using (var httpCliente = _cotacaoApi.Inicializar())
                 {
                     using (var resposta = await httpCliente.PostAsync("v1/price", new StringContent(jsonString, Encoding.UTF8, "application/json")))
@@ -48,7 +51,9 @@ namespace Challenge.Web.Controllers
                     }
                 }
 
-                return PartialView("_ResultPartial", resultado);
+                return resultado.Success 
+                    ? PartialView("_ResultPartial", resultado)
+                    : PartialView("_NotificationsPartial", resultado);
             }
             catch (Exception errno)
             {

@@ -1,0 +1,23 @@
+﻿@model Challenge.Web.ViewModels.CotacaoViewModels.RealizarCotacaoResultViewModel
+
+<div id="resultad-cotacao" class="my-5">
+    <h4>Resultado</h4>
+    <dl class="cotacao-detalhes text-center">
+        <dt><label asp-for="Result.Premio"></label></dt>
+        <dd>@Model.Result.Premio</dd>
+
+        <dt><label asp-for="Result.PrimeiroVencimento"></label></dt>
+        <dd>@Model.Result.PrimeiroVencimento</dd>
+
+        <dt><label asp-for="Result.Parcelas"></label></dt>
+        <dd>@Model.Result.Parcelas</dd>
+
+        <dt><label asp-for="Result.ValorParcelas"></label></dt>
+        <dd>@Model.Result.ValorParcelas</dd>
+
+        <dt><label asp-for="Result.CoberturaTotal"></label></dt>
+        <dd>@Model.Result.CoberturaTotal</dd>
+    </dl>
+    <button id="nova-cotacao" class="btn btn-lg btn-block btn-secondary text-uppercase">Realizar nova cotação</button>
+</div>
+

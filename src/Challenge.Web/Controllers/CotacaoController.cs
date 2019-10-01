@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Challenge.Domain.Services;
+using Challenge.Domain.Repository;
 using Challenge.Web.Services;
 using Challenge.Web.ViewModels.CotacaoViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -16,19 +15,19 @@ namespace Challenge.Web.Controllers
     public class CotacaoController : Controller
     {
         private readonly CotacaoApi _cotacaoApi;
-        private readonly ICoberturaService _coberturaService;
+        private readonly ICoberturaRepository _coberturaRepository;
 
-        public CotacaoController(CotacaoApi cotacaoApi, ICoberturaService coberturaService)
+        public CotacaoController(CotacaoApi cotacaoApi, ICoberturaRepository coberturaRepository)
         {
             _cotacaoApi = cotacaoApi;
-            _coberturaService = coberturaService;
+            _coberturaRepository = coberturaRepository;
         }
 
         [HttpGet]
         [Route("")]
         public IActionResult Index()
         {
-            ViewBag.Coberturas = new SelectList(_coberturaService.ObterTodos(), "Id", "Nome");
+            ViewBag.Coberturas = new SelectList(_coberturaRepository.ObterTodos(), "Id", "Nome");
             return View();
         }
 

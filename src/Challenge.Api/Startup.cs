@@ -1,5 +1,7 @@
 ﻿using Challenge.Domain.Handlers;
+using Challenge.Domain.Repository;
 using Challenge.Domain.Services;
+using Challenge.Infra.Repository;
 using Challenge.Infra.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,11 +14,10 @@ namespace Challenge.Api
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc()
-                .AddJsonOptions(options => { options.SerializerSettings.DateFormatString = "dd/MM/yyyy"; }); 
+            services.AddMvc().AddJsonOptions(options => { options.SerializerSettings.DateFormatString = "dd/MM/yyyy"; }); 
             services.AddResponseCompression();
             services.AddTransient<ICidadeService, CidadeService>();
-            services.AddTransient<ICoberturaService, CoberturaService>();
+            services.AddTransient<ICoberturaRepository, CoberturaRepository>();
             services.AddTransient<CotacaoHandler, CotacaoHandler>();
 
             services.AddSwaggerGen(x =>

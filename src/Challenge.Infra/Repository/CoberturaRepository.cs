@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Challenge.Domain.Models;
-using Challenge.Domain.Services;
+using Challenge.Domain.Repository;
 
-namespace Challenge.Infra.Services
+namespace Challenge.Infra.Repository
 {
-    public class CoberturaService : ICoberturaService
+    public class CoberturaRepository : ICoberturaRepository
     {
         public IEnumerable<Cobertura> ObterTodos()
         {

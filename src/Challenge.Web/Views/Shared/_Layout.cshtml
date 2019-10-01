@@ -28,10 +28,13 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Início</a>
+                            <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Início</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Cotação</a>
+                            <a class="nav-link text-dark" asp-controller="Cotacao" asp-action="Index">Cotação</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-protocol="http" asp-host="localhost:57865/swagger">Documentação api</a>
                         </li>
                     </ul>
                 </div>

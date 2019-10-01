@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Challenge.Domain.Models;
-using Challenge.Domain.Services;
+using Challenge.Domain.Repository;
 
 namespace Challenge.Tests.Fakes
 {
-    public class FakeCoberturaService : ICoberturaService
+    public class FakeCoberturaRepository : ICoberturaRepository
     {
         public IEnumerable<Cobertura> ObterTodos()
         {

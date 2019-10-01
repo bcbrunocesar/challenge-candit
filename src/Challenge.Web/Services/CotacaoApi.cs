@@ -7,7 +7,7 @@ namespace Challenge.Web.Services
     {
         public HttpClient Inicializar()
         {
-            var client = new HttpClient {BaseAddress = new Uri("http://localhost:65026")};
+            var client = new HttpClient {BaseAddress = new Uri("http://localhost:57865/") };
             return client;
         }   
     }

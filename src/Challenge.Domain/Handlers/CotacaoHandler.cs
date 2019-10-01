@@ -4,6 +4,7 @@ using Challenge.Domain.Commands.CotacaoCommands.Input;
 using Challenge.Domain.Commands.CotacaoCommands.Output;
 using Challenge.Domain.Interfaces;
 using Challenge.Domain.Models;
+using Challenge.Domain.Repository;
 using Challenge.Domain.Services;
 using Challenge.Domain.ValueObjects;
 using Flunt.Notifications;
@@ -14,9 +15,9 @@ namespace Challenge.Domain.Handlers
         ICommandHandler<RealizarCotacaoCommand>
     {
         private readonly ICidadeService _cidadeService;
-        private readonly ICoberturaService _coberturaService;
+        private readonly ICoberturaRepository _coberturaService;
 
-        public CotacaoHandler(ICidadeService cidadeService, ICoberturaService coberturaService)
+        public CotacaoHandler(ICidadeService cidadeService, ICoberturaRepository coberturaService)
         {
             _cidadeService = cidadeService;
             _coberturaService = coberturaService;
@@ -29,7 +30,6 @@ namespace Challenge.Domain.Handlers
             var endereco = new Endereco(command.Endereco.Logradouro, command.Endereco.Bairro, cep, command.Endereco.Cidade);
 
             var coberturas = _coberturaService.ObterPorIds(command.Coberturas);
-            //var coberturas = Cobertura.ObterCoberturasPorId(command.Coberturas);
             var segurado = new Cotacao(nome, command.Nascimento, endereco, coberturas);
 
             AddNotifications(nome, cep, endereco, segurado);

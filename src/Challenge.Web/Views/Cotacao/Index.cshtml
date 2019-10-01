@@ -74,15 +74,15 @@
 
 @section scripts{
     <script>
-        $(function() {
-            $("#submit-cotacao").submit(function(e) {
+        $(function () {
+            $("#submit-cotacao").submit(function (e) {
                 e.preventDefault();
 
                 $.ajax({
                     url: '@Url.Action("Index")',
                     data: $(this).serialize(),
                     method: "POST"
-                }).done(function(data) {
+                }).done(function (data) {
                     $("#resultado-cotacao-container").html(data);
                     $('html, body').animate({
                             scrollTop: $("#resultad-cotacao").offset().top
@@ -92,10 +92,10 @@
             });
         });
 
-        $(function() {
+        $(function () {
             $("#cotacao-container").on("click",
                 "#nova-cotacao",
-                function() {
+                function () {
                     $('html, body').animate({
                             scrollTop: $("#cotacao-container").offset().top
                         },

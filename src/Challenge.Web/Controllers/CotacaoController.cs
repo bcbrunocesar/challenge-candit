@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using Challenge.Domain.Repository;
 using Challenge.Web.Services;
+using Challenge.Web.ViewModels.CommandResult;
 using Challenge.Web.ViewModels.CotacaoViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -59,7 +61,18 @@ namespace Challenge.Web.Controllers
                 Console.WriteLine(errno.Message);
             }
 
-            return RedirectToAction("Index");
+            var retornoErro = new RealizarCotacaoResultViewModel
+            {
+                Success = false,
+                Message = "Não foi possível acesar o serviço!",
+                Result = null,
+                Notifications = new List<NotificationViewModel>
+                {
+                    new NotificationViewModel {Property = "Service", Message = "Ocorreu um erro ao acessar o serviço."}
+                }
+            };
+
+            return PartialView("_NotificationsPartial", retornoErro);
         }
     }
 }

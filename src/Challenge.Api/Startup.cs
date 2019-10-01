@@ -22,7 +22,7 @@ namespace Challenge.Api
 
             services.AddSwaggerGen(x =>
             {
-                x.SwaggerDoc("v1", new Info{Title = "Challenge CI&T", Version = "v1"});
+                x.SwaggerDoc("v1", new Info{Title = "Challenge C&T", Version = "v1"});
             });
         }
 
@@ -36,7 +36,7 @@ namespace Challenge.Api
             app.UseMvc();
             app.UseResponseCompression();
             app.UseSwagger();
-            app.UseSwaggerUI(x => { x.SwaggerEndpoint("/swagger/v1/swagger.json", "Challenge CI&T - V1"); });
+            app.UseSwaggerUI(x => { x.SwaggerEndpoint("/swagger/v1/swagger.json", "Challenge C&T - V1"); });
         }
     }
 }

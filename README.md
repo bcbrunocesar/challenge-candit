@@ -1,21 +1,21 @@
-# Desafio CI&T
+# Desafio C&T
 Objetivo
 
-Criar serviço onde o corretor informa os
-dados básicos do futuro segurado e a lista de coberturas nas quais o segurado está
+Criar serviÃ§o onde o corretor informa os
+dados bÃ¡sicos do futuro segurado e a lista de coberturas nas quais o segurado estÃ¡
 interessado.
 
-Retornar com base nas informações concebidas o _valor do prêmio_, _parcelas_, _valor das parcelas_, _primeiro vencimento_ e o _valor total da cobertura_.
+Retornar com base nas informaÃ§Ãµes concebidas o _valor do prÃªmio_, _parcelas_, _valor das parcelas_, _primeiro vencimento_ e o _valor total da cobertura_.
 
 
-## Serviços disponíveis
+## ServiÃ§os disponÃ­veis
 `/v1/price` `[Post]`
 `/v1/cities` `[Get]`
 
 ## Exemplos
 `/v1/price`
 
-##### Requisição válida
+##### RequisiÃ§Ã£o vÃ¡lida
 ![diagram](docs/exemplos/post-valid.jpg)
 
 ##### Retorno
@@ -23,7 +23,7 @@ Retornar com base nas informações concebidas o _valor do prêmio_, _parcelas_, _v
 
 ---
 
-##### Requisição inválida
+##### RequisiÃ§Ã£o invÃ¡lida
 ![diagram](docs/exemplos/post-invalid.jpg)
 
 ##### Retorno

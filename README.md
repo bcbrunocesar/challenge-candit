@@ -1,4 +1,4 @@
-# Desafio C&T
+# Desafio CI&T
 Objetivo
 
 Criar serviço onde o corretor informa os
